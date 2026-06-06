@@ -63,8 +63,20 @@ export default function JarvisScreen() {
         } catch { /* ignore */ }
       }
       setMessages(prev => [...prev, mkMsg(reply, false)]);
-    } catch {
-      setMessages(prev => [...prev, mkMsg("Sorry, I couldn't connect right now. Try again in a moment.", false)]);
+    } catch (err) {
+      let errorMsg = "I'm taking longer than usual to think. Please try again.";
+      if (err.code === 'ECONNABORTED') {
+        errorMsg = "That took too long — the AI server is busy. Try a shorter question, or wait a moment and ask again.";
+      } else if (err.response?.status === 403) {
+        errorMsg = err.response?.data?.message?.includes('limit')
+          ? "You've reached your daily Jarvis limit. Upgrade to Pro for 100 messages/day, or come back tomorrow."
+          : "This feature requires a paid plan. Tap the Free badge to upgrade.";
+      } else if (err.response?.status >= 500) {
+        errorMsg = "Server hiccup — give me a moment and try again.";
+      } else if (!err.response) {
+        errorMsg = "Can't reach the server. Check your internet and try again.";
+      }
+      setMessages(prev => [...prev, mkMsg(errorMsg, false)]);
     } finally {
       setTyping(false);
       setTimeout(() => listRef.current?.scrollToEnd({ animated: true }), 100);

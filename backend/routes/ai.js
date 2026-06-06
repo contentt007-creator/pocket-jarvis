@@ -114,11 +114,22 @@ router.post('/chat', auth, checkAiLimit, async (req, res) => {
       : null;
 
     const prompt = buildSystemPrompt(ctx, message, activeExpert);
-    const result = await model.generateContent(prompt);
+
+    // Race the Gemini call against a 45s server-side timeout so we never hang clients
+    const result = await Promise.race([
+      model.generateContent(prompt),
+      new Promise((_, reject) => setTimeout(() => reject(new Error('Gemini request timeout')), 45000)),
+    ]);
     const text = result.response.text();
     res.json({ reply: text, activeMethod: userMethod?.activeMethod || null });
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    console.error('AI chat error:', err.message);
+    const isTimeout = err.message?.includes('timeout');
+    res.status(isTimeout ? 504 : 500).json({
+      message: isTimeout
+        ? 'AI is taking too long to respond. Please try a shorter question.'
+        : err.message
+    });
   }
 });
 
@@ -129,9 +140,13 @@ router.get('/insight', auth, async (req, res) => {
     const prompt = `You are Jarvis, a friendly personal finance AI. Based on this snapshot for ${ctx.name}:
 Balance: ৳${ctx.balance.toLocaleString()}, This month income: ৳${ctx.income.toLocaleString()}, expenses: ৳${ctx.expense.toLocaleString()}.
 Write ONE punchy, personalized insight sentence (max 20 words) that references their actual numbers. No greeting, no emoji, just the insight.`;
-    const result = await model.generateContent(prompt);
+    const result = await Promise.race([
+      model.generateContent(prompt),
+      new Promise((_, reject) => setTimeout(() => reject(new Error('Gemini timeout')), 30000)),
+    ]);
     res.json({ insight: result.response.text().trim() });
   } catch (err) {
+    console.error('AI insight error:', err.message);
     res.status(500).json({ message: err.message });
   }
 });
