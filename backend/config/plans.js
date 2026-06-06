@@ -6,18 +6,18 @@ const PLANS = {
     price: 0,
     currency: 'BDT',
     limits: {
-      transactionsPerMonth: 30,
-      goals: 2,
-      activeLoans: 0,
-      jarvisMessagesPerDay: 0,
+      transactionsPerMonth: 50,
+      goals: 3,
+      activeLoans: 2,
+      jarvisMessagesPerDay: 10,        // generous taste of Jarvis
     },
     features: {
-      aiChat: false,
-      aiInsight: false,
-      reports: false,
-      subscriptionsDebts: false,
-      lendMoney: false,
-      moneyMasters: 'view',       // 'none' | 'view' | 'full'
+      aiChat: true,                    // ✅ enabled — limited by jarvisMessagesPerDay
+      aiInsight: true,                 // ✅ enabled — daily insight card
+      reports: true,                   // ✅ enabled — basic reports
+      subscriptionsDebts: true,        // ✅ enabled — basic tracking
+      lendMoney: true,                 // ✅ enabled — limited by activeLoans
+      moneyMasters: 'view',            // view only, can't apply methods
       applyBudgetMethod: false,
       whatIf: false,
       dailyWisdom: false,
@@ -31,9 +31,9 @@ const PLANS = {
     currency: 'BDT',
     limits: {
       transactionsPerMonth: Infinity,
-      goals: 10,
-      activeLoans: 5,
-      jarvisMessagesPerDay: 30,
+      goals: 15,
+      activeLoans: 10,
+      jarvisMessagesPerDay: 100,
     },
     features: {
       aiChat: true,
