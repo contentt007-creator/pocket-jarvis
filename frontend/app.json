@@ -1,0 +1,38 @@
+{
+  "expo": {
+    "name": "Pocket Jarvis",
+    "slug": "pocket-jarvis",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": false,
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0A0A0A"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.pocketjarvis.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0A0A0A"
+      },
+      "package": "com.pocketjarvis.app"
+    },
+    "plugins": [
+      "expo-router"
+    ],
+    "owner": "jahidethans",
+    "scheme": "pocketjarvis",
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "97532fc4-9caa-4d77-aafa-79f2c184a1fb"
+      }
+    }
+  }
+}
