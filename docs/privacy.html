@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — Pocket Jarvis</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #F8F9FC;
+      color: #111827;
+      line-height: 1.7;
+    }
+    .nav {
+      position: sticky; top: 0;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #E5E7EB;
+      padding: 16px 24px;
+      z-index: 10;
+    }
+    .nav a {
+      color: #5B4DF8;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .container {
+      max-width: 760px;
+      margin: 48px auto;
+      padding: 0 24px;
+    }
+    h1 {
+      font-size: 40px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+    .meta {
+      color: #6B7280;
+      font-size: 14px;
+      margin-bottom: 40px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid #E5E7EB;
+    }
+    h2 {
+      font-size: 22px;
+      font-weight: 800;
+      margin-top: 40px;
+      margin-bottom: 16px;
+      color: #111827;
+    }
+    h3 {
+      font-size: 17px;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 8px;
+      color: #374151;
+    }
+    p { margin-bottom: 16px; color: #374151; }
+    ul, ol { margin: 0 0 16px 24px; color: #374151; }
+    li { margin-bottom: 8px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 14px;
+    }
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #E5E7EB;
+    }
+    th { font-weight: 700; background: #F8F9FC; }
+    strong { color: #111827; font-weight: 700; }
+    a { color: #5B4DF8; }
+    .footer {
+      margin-top: 80px;
+      padding-top: 24px;
+      border-top: 1px solid #E5E7EB;
+      color: #6B7280;
+      font-size: 14px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a href="index.html">← Pocket Jarvis</a>
+  </nav>
+
+  <div class="container">
+    <h1>Privacy Policy</h1>
+    <p class="meta"><strong>Effective Date:</strong> December 1, 2025 · <strong>Last Updated:</strong> December 1, 2025</p>
+
+    <h2>Introduction</h2>
+    <p>Pocket Jarvis ("we", "our", "us", "the App") is a personal finance management application. This privacy policy explains what information we collect, how we use it, and how we protect it.</p>
+    <p>We respect your privacy and are committed to protecting your personal data.</p>
+
+    <h2>1. Information We Collect</h2>
+
+    <h3>Account Information</h3>
+    <ul>
+      <li><strong>Name</strong> — to personalize your experience</li>
+      <li><strong>Email address</strong> — for authentication and account recovery</li>
+      <li><strong>Password</strong> — stored only as a one-way encrypted hash (we never see your password)</li>
+      <li><strong>Monthly income & initial balance</strong> — entered during onboarding for budget calculations</li>
+    </ul>
+
+    <h3>Financial Data You Enter</h3>
+    <ul>
+      <li>Transactions (income and expenses)</li>
+      <li>Budget categories and limits</li>
+      <li>Savings goals and progress</li>
+      <li>Loans (money you've lent to others)</li>
+      <li>Subscriptions and debts you track</li>
+    </ul>
+
+    <h3>Subscription & Payment Information</h3>
+    <ul>
+      <li>Selected subscription plan (Free, Pro, or Premium)</li>
+      <li>bKash transaction IDs (TrxID) you submit for payment verification</li>
+      <li>Google Play purchase tokens (when you subscribe via Google Play)</li>
+    </ul>
+    <p>We do <strong>not</strong> store your bKash PIN, card numbers, or any banking credentials.</p>
+
+    <h3>Technical Information</h3>
+    <ul>
+      <li>Device type and operating system version</li>
+      <li>App version</li>
+      <li>Crash reports (anonymized)</li>
+    </ul>
+
+    <h2>2. How We Use Your Information</h2>
+    <p>We use your information only to:</p>
+    <ul>
+      <li>Provide and improve the core App functionality</li>
+      <li>Calculate budgets, financial health scores, and personalized insights</li>
+      <li>Process subscription payments and grant access to paid features</li>
+      <li>Send your financial data to Google Gemini AI to generate personalized advice</li>
+      <li>Communicate important account updates and security notifications</li>
+    </ul>
+    <p>We will <strong>never</strong> sell your data, use it for advertising, or share individual user data with marketers.</p>
+
+    <h2>3. Data Storage & Security</h2>
+    <p>Your data is stored on <strong>MongoDB Atlas</strong> (encrypted at rest with AES-256) and our <strong>Railway</strong> application servers (encrypted in transit using TLS/HTTPS).</p>
+    <p>Passwords are hashed using <strong>bcrypt</strong> with a salt — we cannot recover your original password.</p>
+
+    <h2>4. AI Processing (Google Gemini)</h2>
+    <p>When you chat with <strong>Jarvis AI</strong>, your message and a summary of your financial data is sent to <strong>Google's Gemini API</strong> to generate personalized advice.</p>
+    <ul>
+      <li>Google does <strong>not</strong> retain this data for training their AI models</li>
+      <li>Your data is processed only to generate your response and is then discarded</li>
+    </ul>
+    <p>You can avoid AI processing entirely by not using the Jarvis chat feature.</p>
+
+    <h2>5. Third-Party Services</h2>
+    <table>
+      <tr><th>Service</th><th>Purpose</th><th>Data shared</th></tr>
+      <tr><td>MongoDB Atlas</td><td>Database</td><td>All app data</td></tr>
+      <tr><td>Railway</td><td>Server hosting</td><td>All app data</td></tr>
+      <tr><td>Google Gemini</td><td>AI responses</td><td>Message + financial summary</td></tr>
+      <tr><td>bKash</td><td>Payments</td><td>TrxID and amount</td></tr>
+      <tr><td>Google Play</td><td>Payments</td><td>Purchase tokens</td></tr>
+    </table>
+
+    <h2>6. Your Rights</h2>
+    <p>You have the right to:</p>
+    <ul>
+      <li><strong>Access</strong> your data — view it anytime in the app</li>
+      <li><strong>Update</strong> your data — edit transactions, goals, profile</li>
+      <li><strong>Delete your account</strong> — contact us to permanently delete all your data</li>
+      <li><strong>Export your data</strong> — use the in-app Export feature on Reports</li>
+      <li><strong>Opt out of AI processing</strong> — simply don't use Jarvis chat</li>
+    </ul>
+    <p>Email us at <a href="mailto:contentt0077@gmail.com">contentt0077@gmail.com</a> to delete your account or request data export. We respond within 30 days.</p>
+
+    <h2>7. Data Retention</h2>
+    <p>We keep your data while your account is active. If you delete your account, all personal data is <strong>permanently deleted within 30 days</strong>.</p>
+
+    <h2>8. Children's Privacy</h2>
+    <p>Pocket Jarvis is <strong>not intended for children under 18</strong>. We do not knowingly collect personal information from anyone under 18.</p>
+
+    <h2>9. Changes to This Policy</h2>
+    <p>We may update this policy occasionally. Material changes will be communicated via in-app notification or email. The "Last Updated" date at the top reflects the latest version.</p>
+
+    <h2>10. Contact Us</h2>
+    <p>For any questions related to this privacy policy:</p>
+    <p><strong>Email:</strong> <a href="mailto:contentt0077@gmail.com">contentt0077@gmail.com</a><br>
+    <strong>App:</strong> Pocket Jarvis<br>
+    <strong>Country:</strong> Bangladesh</p>
+
+    <div class="footer">
+      <p>© 2025 Pocket Jarvis · <a href="index.html">Home</a> · <a href="terms.html">Terms</a></p>
+    </div>
+  </div>
+</body>
+</html>
