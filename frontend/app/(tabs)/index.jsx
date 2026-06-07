@@ -12,6 +12,7 @@ import { useAuth } from '../../context/AuthContext';
 import { useFinance } from '../../context/FinanceContext';
 import { useMethod } from '../../context/MethodContext';
 import { usePlan } from '../../context/PlanContext';
+import { usePin } from '../../context/PinContext';
 import { formatCurrency } from '../../utils/formatCurrency';
 import { calculateHealthScore, scoreToGrade } from '../../utils/calculateHealth';
 import { colors, gradients, radius, spacing, typography, shadows } from '../../theme';
@@ -81,6 +82,7 @@ export default function HomeScreen() {
   const { user } = useAuth();
   const { isFree, plan } = usePlan();
   const { activeMethod } = useMethod();
+  const { hasPin } = usePin();
   const {
     transactions, summary, budget, goals,
     fetchTransactions, fetchSummary, fetchBudget, fetchGoals,
@@ -158,7 +160,7 @@ export default function HomeScreen() {
           </View>
           <View style={styles.headerActions}>
             <IconButton icon="notifications-outline" hasDot={isFree} onPress={() => router.push('/screens/upgrade')} />
-            <TouchableOpacity onPress={() => router.push('/screens/masters')}>
+            <TouchableOpacity onPress={() => router.push('/screens/profile')}>
               <Avatar name={user?.name || 'U'} size={44} bg={colors.primary} />
             </TouchableOpacity>
           </View>
@@ -267,6 +269,24 @@ export default function HomeScreen() {
             <Ionicons name="arrow-forward" size={14} color={colors.primary} />
           </TouchableOpacity>
         </Card>
+
+        {/* ═════ PIN setup banner ═════ */}
+        {!hasPin && (
+          <TouchableOpacity
+            style={styles.pinBanner}
+            onPress={() => router.push('/screens/set-pin')}
+            activeOpacity={0.85}
+          >
+            <View style={styles.pinBannerIcon}>
+              <Ionicons name="lock-closed" size={16} color="#fff" />
+            </View>
+            <View style={{ flex: 1 }}>
+              <Text style={styles.pinBannerTitle}>Secure your account</Text>
+              <Text style={styles.pinBannerSub}>Set a 4-digit PIN — required every time you open the app</Text>
+            </View>
+            <Ionicons name="arrow-forward" size={16} color={colors.primary} />
+          </TouchableOpacity>
+        )}
 
         {/* ═════ Quick Actions ═════ */}
         <SectionHeader title="Quick Actions" />
@@ -405,6 +425,12 @@ const styles = StyleSheet.create({
   insightText: { ...typography.body, color: colors.textMuted, lineHeight: 22 },
   insightBtn: { flexDirection: 'row', alignItems: 'center', gap: 6, marginTop: spacing.md, alignSelf: 'flex-start' },
   insightBtnText: { color: colors.primary, fontWeight: '700', fontSize: 13 },
+
+  // PIN banner
+  pinBanner: { flexDirection: 'row', alignItems: 'center', gap: spacing.md, backgroundColor: colors.primarySoft, borderRadius: radius.lg, padding: spacing.md, marginTop: spacing.lg, borderWidth: 1, borderColor: colors.primary + '30' },
+  pinBannerIcon: { width: 36, height: 36, borderRadius: radius.md, backgroundColor: colors.primary, alignItems: 'center', justifyContent: 'center' },
+  pinBannerTitle: { ...typography.bodyBold, color: colors.primary, fontSize: 14 },
+  pinBannerSub: { ...typography.caption, color: colors.text, marginTop: 2 },
 
   // Quick actions
   quickGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.md },
