@@ -25,7 +25,19 @@
     },
     "plugins": [
       "expo-router",
-      "expo-secure-store"
+      "expo-secure-store",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "compileSdkVersion": 35,
+            "targetSdkVersion": 35,
+            "buildToolsVersion": "35.0.0",
+            "minSdkVersion": 24,
+            "kotlinVersion": "1.9.25"
+          }
+        }
+      ]
     ],
     "owner": "jahidethans",
     "scheme": "pocketjarvis",
