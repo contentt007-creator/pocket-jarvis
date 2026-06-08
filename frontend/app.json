@@ -22,7 +22,7 @@
         "backgroundColor": "#0A0A0A"
       },
       "package": "com.pocketjarvis.app",
-      "versionCode": 2
+      "versionCode": 3
     },
     "plugins": [
       "expo-router",
@@ -36,9 +36,8 @@
             "buildToolsVersion": "35.0.0",
             "minSdkVersion": 24,
             "kotlinVersion": "1.9.25",
-            "enableProguardInReleaseBuilds": true,
-            "enableShrinkResourcesInReleaseBuilds": true,
-            "extraProguardRules": "-keep class com.facebook.react.turbomodule.** { *; }"
+            "enableProguardInReleaseBuilds": false,
+            "enableShrinkResourcesInReleaseBuilds": false
           }
         }
       ]
